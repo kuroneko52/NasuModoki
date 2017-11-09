@@ -17,6 +17,8 @@ public class PlayerControll : MonoBehaviour
 	//着地判定
 	bool isGround = true;
 
+	bool spaceKey = false;
+
 
 	// Use this for initialization
 	void Start ()
@@ -36,18 +38,17 @@ public class PlayerControll : MonoBehaviour
 			transform.localScale = new Vector3 (-1.0f, 1.0f, 1.0f);
 			transform.position -= transform.right * runSpeed * Time.deltaTime;
 		}
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (spaceKey) {
 			if (isGround) {
 				rb2d.AddForce (Vector2.up * jumpForce);
 				isGround = false;
 			}
+			spaceKey = false;
 		}
 		if (Input.GetKey (KeyCode.Escape)) {
 			Application.Quit ();
 			return;
 		}
-
-		Clamp ();
 	}
 
 	//キャラクターの画面端はみ出し防止
@@ -96,6 +97,10 @@ public class PlayerControll : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			spaceKey = true;
+		}
+
+		Clamp ();
 	}
 }
