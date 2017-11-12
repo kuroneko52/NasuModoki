@@ -5,7 +5,7 @@ This is a 2D game.
 
 This game made in Unity for Windows.
 
-Download Release Folder and Start .exe.
+Open Release Folder and Start .exe.
 
 **GameRules
 
